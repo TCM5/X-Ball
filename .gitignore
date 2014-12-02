@@ -5,6 +5,9 @@
 *.iws
 .idea/
 
+# Gradle metadata
+.gradle
+
 # built application files
 *.apk
 *.ap_
