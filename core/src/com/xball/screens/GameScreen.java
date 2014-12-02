@@ -1,20 +1,19 @@
 package com.xball.screens;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.xball.actors.Ball;
+import com.xball.actors.BallsManager;
 import com.xball.camera.OrthoCamera;
 
-public class MenuScreen extends Screen{
+public class GameScreen extends Screen{
 
 	private OrthoCamera camera;
-	private Ball player;
+	private BallsManager ballM;
 
 
 	@Override
 	public void create() {
 		camera = new OrthoCamera();
-		player = new Ball(new Vector2(300, 300));
+		ballM = new BallsManager();
 	}
 
 
@@ -23,7 +22,7 @@ public class MenuScreen extends Screen{
 	public void render(SpriteBatch sb) {
 		sb.setProjectionMatrix(camera.combined);
 		sb.begin();
-		player.render(sb);
+		ballM.render(sb);
 		sb.end();
 
 	}
@@ -31,7 +30,7 @@ public class MenuScreen extends Screen{
 	public void update() {
 
 		camera.update();
-		player.update();
+		ballM.update();
 	}
 	@Override
 	public void resize(int width, int height) {

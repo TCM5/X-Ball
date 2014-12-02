@@ -6,7 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.xball.screens.MenuScreen;
+import com.xball.screens.GameScreen;
 import com.xball.screens.ScreenManager;
 
 
@@ -18,7 +18,7 @@ public class XBallGame implements ApplicationListener {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		ScreenManager.setScreen(new MenuScreen());
+		ScreenManager.setScreen(new GameScreen());
 
 	}
 
