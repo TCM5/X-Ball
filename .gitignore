@@ -5,6 +5,12 @@
 *.iws
 .idea/
 
+.gradle
+build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
 # Gradle metadata
 .gradle
 build.gradle
