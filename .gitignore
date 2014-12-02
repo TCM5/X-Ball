@@ -71,3 +71,15 @@ gradle.properties
 gradlew
 gradlew.bat
 settings.gradle
+
+#project stuff
+.classpath
+.project
+
+#gradle stuff
+.settings/gradle
+gradle/wrapper
+build.gradle
+gradle.properties
+settings.gradle
+
