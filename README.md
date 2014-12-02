@@ -1,4 +1,0 @@
-X-Ball
-======
-
-Sequence game
