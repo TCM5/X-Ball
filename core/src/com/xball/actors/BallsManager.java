@@ -10,27 +10,41 @@ import com.xball.statics.Sizes;
 
 public class BallsManager {
 
-//	private final float initX = MathUtils.random(0, Sizes.WIDTH - TextureManager.PLAYER.getWidth());
-//	private final float initY = Sizes.HEIGHT + TextureManager.PLAYER.getHeight();
-//	private final float speedY = -MathUtils.random(0,3);
-
 	private ArrayList<Ball> balls = new ArrayList<Ball>();
 
 	public BallsManager() {
 		initPosition();
-		System.out.println(TextureManager.PLAYER.getHeight());
+
+
+
 	}
 
 	private void initPosition(){
 
-		for(int i = 0; i < 10 ; i++){
-			balls.add(new Ball());
+		for(int i = 0; i < 5 ; i++){
+			float x = MathUtils.random(0, Sizes.WIDTH - TextureManager.PLAYER.getWidth());
+			balls.add(new Ball(new Vector2(x, Sizes.HEIGHT - TextureManager.PLAYER.getHeight()*2), new Vector2(0,
+					-MathUtils.random(1,2))));
+		}		
+	}
+
+	private void checkCollision(){
+		for(Ball ball: balls){
+
+			if(ball.getPosition().y <= 0 ){
+				ball.setDirection(0, ball.getInitDir().y*-1);
+			}
+
+			if(ball.getPosition().y >= Sizes.HEIGHT - TextureManager.PLAYER.getHeight() ){
+				ball.setDirection(0, ball.getInitDir().y*-1);
+			}
 		}
 	}
 
 	public void update(){
 		for(Ball ball : balls){
 			ball.update();
+			checkCollision();
 		}
 
 	}

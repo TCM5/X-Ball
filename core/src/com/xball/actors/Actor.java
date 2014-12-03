@@ -8,11 +8,12 @@ import com.badlogic.gdx.math.Vector2;
 public abstract class Actor {
 
 	protected Texture texture;
-	protected Vector2 pos, direction ;
+	protected Vector2 pos, direction, initDir ;
 	public Actor(Texture texture, Vector2 pos, Vector2 dir) {
 		this.texture = texture;
 		this.pos = pos;
 		direction = dir;
+		initDir = dir;
 	}
 
 	public abstract void update();
@@ -27,8 +28,11 @@ public abstract class Actor {
 
 	public void setDirection(float x, float y) {
 		direction.set(x, y);
-		direction.scl(Gdx.graphics.getDeltaTime());
+//		direction.scl(Gdx.graphics.getDeltaTime());
 	}
 
+	public Vector2 getInitDir() {
+		return initDir;
+	}
 }
 

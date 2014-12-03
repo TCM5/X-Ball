@@ -9,14 +9,11 @@ public class GameScreen extends Screen{
 	private OrthoCamera camera;
 	private BallsManager ballM;
 
-
 	@Override
 	public void create() {
 		camera = new OrthoCamera();
 		ballM = new BallsManager();
 	}
-
-
 
 	@Override
 	public void render(SpriteBatch sb) {
@@ -24,14 +21,14 @@ public class GameScreen extends Screen{
 		sb.begin();
 		ballM.render(sb);
 		sb.end();
-
 	}
+
 	@Override
 	public void update() {
-
 		camera.update();
 		ballM.update();
 	}
+
 	@Override
 	public void resize(int width, int height) {
 		camera.resize();
