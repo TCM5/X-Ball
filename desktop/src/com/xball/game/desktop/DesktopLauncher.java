@@ -9,8 +9,8 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "X-Ball";
-		cfg.height = Sizes.HEIGHT;
-		cfg.width = Sizes.WIDTH;
+		cfg.height = 480;
+		cfg.width = 320;
 		new LwjglApplication(new XBallGame(), cfg);
 	}
 }

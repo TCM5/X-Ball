@@ -1,55 +1,43 @@
 package com.xball.screens;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.xball.actors.BallsManager;
-import com.xball.camera.OrthoCamera;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.xball.game.XBallGame;
 
-public class GameScreen extends Screen{
+public class GameScreen extends AbstractScreen{
 
-	private OrthoCamera camera;
-	private BallsManager ballM;
+	private OrthographicCamera camera;
 
-	@Override
-	public void create() {
-		camera = new OrthoCamera();
-		ballM = new BallsManager();
-	}
-
-	@Override
-	public void render(SpriteBatch sb) {
-		sb.setProjectionMatrix(camera.combined);
-		sb.begin();
-		ballM.render(sb);
-		sb.end();
-	}
-
-	@Override
-	public void update() {
+	public GameScreen(XBallGame game) {
+		super(game);		
+		camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+		camera.position.set(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2,0f);
 		camera.update();
-		ballM.update();
 	}
 
 	@Override
-	public void resize(int width, int height) {
-		camera.resize();
-	}
+	public void dispose() {}
 
 	@Override
-	public void dispose() {
-		// TODO Auto-generated method stub
-
-	}
+	public void pause() {}
 
 	@Override
-	public void pause() {
-		// TODO Auto-generated method stub
-
-	}
+	public void resume() {}
 
 	@Override
-	public void resume() {
-		// TODO Auto-generated method stub
+	public void render(float delta) {}
 
+	@Override
+	public void show() {}
+
+	@Override
+	public void hide() {}
+
+	@Override
+	public void resize(int width, int height) {}
+
+	public OrthographicCamera getCamera() {
+		return camera;
 	}
 
 }
