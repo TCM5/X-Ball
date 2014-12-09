@@ -5,10 +5,10 @@ import com.xball.game.XBallGame;
 
 public abstract class AbstractScreen implements Screen{
 
-	private XBallGame game;
+
 	
-	public AbstractScreen(XBallGame game) {
-		this.game = game;
+	public AbstractScreen() {
+		
 	}
 	
 	@Override
@@ -31,9 +31,6 @@ public abstract class AbstractScreen implements Screen{
 
 	@Override
 	public void dispose() {}
-	
-	public XBallGame getGame() {
-		return game;
-	}
+
 
 }
