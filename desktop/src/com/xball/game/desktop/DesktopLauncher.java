@@ -2,9 +2,7 @@ package com.xball.game.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.xball.game.GAME_TEST;
 import com.xball.game.XBallGame;
-import com.xball.statics.Sizes;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
