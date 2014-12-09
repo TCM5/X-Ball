@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -20,8 +19,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.joints.MouseJoint;
 import com.badlogic.gdx.physics.box2d.joints.MouseJointDef;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.ui.List;
-import com.badlogic.gdx.utils.Array;
+import com.xball.statics.Config;
 import com.xball.actors.Ball;
 import com.xball.actors.Wall;
 
@@ -89,7 +87,7 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);	
 
-		
+
 		batch.begin();
 		for(Ball b : balls){
 			b.draw(batch, delta);
@@ -99,7 +97,11 @@ public class GameScreen extends AbstractScreen implements InputProcessor {
 		batch.end();
 
 		fps_log.log();
-		debugRenderer.render(world, camera.combined);  
+
+		if(Config.DEBUG_MODE){
+			debugRenderer.render(world, camera.combined);  
+		}
+
 		world.step(BOX_STEP, BOX_VELOCITY_ITERATIONS, BOX_POSITION_ITERATIONS); 
 	}
 
