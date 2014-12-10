@@ -23,12 +23,11 @@ public class Ball extends Actor{
 	private World world;
 	private int RANDOM_X = MathUtils.random(50, 100);
 	private int RANDOM_Y = MathUtils.random(50, 100);
-	
-	BodyDef bodyDef;
-	CircleShape dynamicCircle;
-	Body body;
-	FixtureDef fixtureDef2;
-	
+
+	private BodyDef bodyDef;
+	private Body body;
+	private CircleShape circleShape;
+	private FixtureDef fixtureDef;
 	private Sprite sprite;
 
 	public Ball(World world){
@@ -36,31 +35,31 @@ public class Ball extends Actor{
 	}
 
 	public void start(){
-		
+
 		bodyDef = new BodyDef();  
 		bodyDef.type = BodyType.DynamicBody;  
-		bodyDef.position.set(200,200);  
+		bodyDef.position.set(Gdx.graphics.getWidth()/2,Gdx.graphics.getHeight()/2);  
 		sprite = new Sprite(randomColor());
 		body = world.createBody(bodyDef);  
-		
-	
-		body.setAngularVelocity(1f);
-		
-		dynamicCircle = new CircleShape();
-		dynamicCircle.setRadius((int)((Gdx.graphics.getWidth()/10)/2));  
-		
-	
-		fixtureDef2 = new FixtureDef();  
-		
+
+		/** add this feature later
+		body.setAngularVelocity(5);
+		 */
+		circleShape = new CircleShape();
+		circleShape.setRadius((int)((Gdx.graphics.getWidth()/10)/2));  
+
+
+		fixtureDef = new FixtureDef();  
+
 		body.setLinearVelocity(new Vector2(RANDOM_X, RANDOM_Y));
-//		
-		fixtureDef2.shape = dynamicCircle;  
-		fixtureDef2.density = 1.0f;  
-		fixtureDef2.friction = 0.0f;  
-		fixtureDef2.restitution = 1;  
-		
-		body.createFixture(fixtureDef2);
-	
+		//		
+		fixtureDef.shape = circleShape;  
+		fixtureDef.density = 1.0f;  
+		fixtureDef.friction = 0.0f;  
+		fixtureDef.restitution = 1;  
+
+		body.createFixture(fixtureDef);
+
 	}
 
 	@Override
@@ -68,10 +67,8 @@ public class Ball extends Actor{
 		super.draw(batch, parentAlpha);
 		sprite.setSize((Gdx.graphics.getWidth()/10), (Gdx.graphics.getWidth()/10));
 		sprite.setPosition(body.getPosition().x - sprite.getWidth()/2, body.getPosition().y -sprite.getHeight()/2);
-//		sprite.setRotation(body.getAngle()* MathUtils.degreesToRadians);
+		sprite.setRotation(body.getAngle()* MathUtils.radiansToDegrees);
 		sprite.draw(batch);
-			
-		
 	}
 
 	@Override
@@ -93,7 +90,7 @@ public class Ball extends Actor{
 			return TextureManager.ball_y;
 		}
 		return TextureManager.ball_all;
-		
+
 	}
-	
+
 }
